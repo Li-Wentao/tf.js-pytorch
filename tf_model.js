@@ -68,7 +68,7 @@ console.log(params[2])
 
 
 // Save to local
-fs.writeFile("./test.txt", test_var, (err) => {
+fs.writeFile("./test.json", test_var, (err) => {
   if (err) {
   console.error(err);
   return;
