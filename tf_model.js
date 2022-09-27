@@ -57,14 +57,18 @@ model.compile({loss: 'categoricalCrossentropy', optimizer: 'sgd'});
 // console.log(JSON.stringify(model.getWeights()[0].dataSync()));
 // console.log(model.getWeights()[0].dataSync())
 // console.log(model.getWeights()[0].print())
-let params = []
+let out = []
+let dict = new Object();
 for (let i = 0; i < model.getWeights().length; i++) {
-  params.push(model.getWeights()[i].dataSync());
+  dict = {'model': model.getWeights()[i],
+          'params': model.getWeights()[i].dataSync()}
+  out.push(dict);
 }
-let test_var = JSON.stringify(params);
-console.log(params[2])
+let test_var = JSON.stringify(out);
+console.log(JSON.stringify(out[3]))
+// console.log(params[2])
 // let test_var = JSON.stringify(model.getWeights()[0]);
-// console.log(test_var)
+// console.log(model.getWeights()[0])
 
 
 // Save to local
