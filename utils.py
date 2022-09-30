@@ -38,3 +38,9 @@ def load_params_from_tf(py_model:nn.Module, tf_model:list):
             raise Exception(f"Sorry, model structure did not align in pytorch layer {py_layer}, and tensorflow.js layer {tf_layer}!")
     else:
         raise TypeError("The model structure of pytorch and tensorflow.js is not aligned! Cannot transfer parameters accordingly.")
+
+def process_state_dict(state_dict):
+    lr_py = {}
+    for key, value in state_dict.items():
+        lr_py[key] = value.cpu().detach().numpy().tolist()
+    return lr_py

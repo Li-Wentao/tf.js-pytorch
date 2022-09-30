@@ -65,7 +65,7 @@ for (let i = 0; i < model.getWeights().length; i++) {
   out.push(dict);
 }
 let test_var = JSON.stringify(out);
-console.log(JSON.stringify(out[3]))
+// console.log(JSON.stringify(out[3]))
 // console.log(params[2])
 // let test_var = JSON.stringify(model.getWeights()[0]);
 // console.log(model.getWeights()[0])
