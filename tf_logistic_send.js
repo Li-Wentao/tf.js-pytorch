@@ -5,8 +5,8 @@ import fs from 'fs';
 const model = tf.sequential();
 model.add(
   tf.layers.dense({
-    inputShape: 28,
-    units: 28,
+    inputShape: 28*28,
+    units: 1,
     activation: 'sigmoid',
     // useBias: true
   }),

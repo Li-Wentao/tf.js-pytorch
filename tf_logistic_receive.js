@@ -1,14 +1,14 @@
 import * as tf from '@tensorflow/tfjs';
-import fs from 'fs';
+// import fs from 'fs';
 
 // Creating a model
 const model = tf.sequential();
 model.add(
   tf.layers.dense({
-    inputShape: 28,
-    units: 28,
+    inputShape: 784,
+    units: 1,
     activation: 'sigmoid',
-    // useBias: true
+    useBias: true
   }),
 );
 model.compile({
@@ -27,13 +27,13 @@ let py_layers = Object.keys(myJson);
 // console.log('Hi from local tensorflow:\n',model.getWeights()[0])
 let newWeights = [];
 py_layers.forEach(item => {
-  newWeights.push(tf.tensor(myJson[item]))
+  newWeights.push(tf.transpose(tf.tensor(myJson[item])))
 })
 console.log('New weights:\n',newWeights)
 console.log('tfjs weights:\n', model.getWeights())
 console.log('Before weights (example):\n', model.getWeights()[1].dataSync())
 
-// set weights
+// set weights (Model Update)
 if (newWeights.length == model.getWeights().length) {
   model.setWeights(newWeights)
 }
